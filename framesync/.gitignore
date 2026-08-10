@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build output
+dist/
+*/dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+client/.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Temporary uploads
+tmp/
+temp/
+uploads/
+
+# Vercel
+.vercel
+
+# Package manager locks (excluded per project spec)
+package-lock.json
+*/package-lock.json
+yarn.lock
+pnpm-lock.yaml

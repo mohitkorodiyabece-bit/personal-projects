@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-900: #0a0e17;
+  --navy-800: #0f172a;
+  --navy-700: #1e293b;
+  --navy-600: #334155;
+  --purple-500: #8b5cf6;
+  --purple-400: #a78bfa;
+  --purple-600: #7c3aed;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --pink-500: #ec4899;
+  --green-400: #4ade80;
+  --amber-400: #fbbf24;
+  --white: #f8fafc;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(148, 163, 184, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--navy-900);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  position: relative;
+}
+
+canvas {
+  display: block;
+  outline: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--navy-600);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-500);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* RGB glow animation */
+@keyframes rgb-flow {
+  0% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  }
+  33% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+  }
+  66% {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  }
+}
+
+.rgb-glow {
+  animation: rgb-flow 3s ease-in-out infinite;
+}
+
+/* Selection ring */
+.selection-ring {
+  position: absolute;
+  pointer-events: none;
+  border: 2px solid var(--cyan-400);
+  border-radius: 8px;
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.15);
+  transition: all 0.2s ease;
+}
+
+/* Range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--navy-600);
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--purple-400);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: var(--cyan-400);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--purple-400);
+  cursor: pointer;
+  border: none;
+}
+
+/* Color input styling */
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: 2px solid var(--glass-border);
+  border-radius: 8px;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-900);
+  z-index: 100;
+}
+
+/* Transition utilities */
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--purple-400), var(--cyan-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Focus visible */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--purple-500);
+  outline-offset: 2px;
+}
+
+/* Disable text selection on UI chrome */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
